@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router";
 import { Counter } from "./counter";
 import { PageLayout } from "./page-layout";
 import { Home } from "./home";
@@ -21,10 +21,12 @@ function AppRouter() {
         path="fondo-de-inversion-abierto-de-crecimiento"
         element={<PageLayout sidenavItems={menuLinks} />}
       >
-        {menuLinks.map(({ href, id, text }) => (
+        <Route index element={<Navigate to={menuLinks[0].href} />} />
+
+        {menuLinks.map(({ href, id, text }, i) => (
           <Route
             key={id}
-            index
+            index={i === 0}
             path={href}
             element={<Section key={id} title={text} />}
           />

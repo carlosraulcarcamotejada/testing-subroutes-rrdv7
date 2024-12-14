@@ -23,14 +23,17 @@ function Navbar() {
   ];
 
   return (
-    <NavbarNextUI>
-      <NavbarBrand>
+    <NavbarNextUI className="bg-yellow-500#" isBordered>
+      <NavbarBrand className="bg-green-400#">
         <NavLink className="flex space-x-2" to={"/"}>
           <Home />
           <span>Home</span>
         </NavLink>
       </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4">
+      <NavbarContent
+        justify="center"
+        className="hidden sm:flex gap-4 bg-sky-600#"
+      >
         {menuLinks.map((menuLink) => {
           const { pathname } = useLocation();
           const isActive: boolean = pathname === menuLink.href ? true : false;
